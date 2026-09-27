@@ -656,6 +656,7 @@ BarWidget {
                 // Artwork + track details
                 RowLayout {
                     width: parent.width
+                    height: Style.space(72)
                     visible: root.hasTrack
                     spacing: Style.space(14)
 
@@ -689,44 +690,53 @@ BarWidget {
                         }
                     }
 
-                    Column {
+                    // A fixed-height, clipped frame so a two-line title never
+                    // grows the row (and pushes the progress bar down)
+                    Item {
                         Layout.fillWidth: true
-                        Layout.alignment: Qt.AlignVCenter
-                        spacing: Style.space(3)
+                        Layout.fillHeight: true
+                        clip: true
 
-                        Text {
-                            width: parent.width
-                            text: root.trackTitle
-                            textFormat: Text.PlainText
-                            color: root.bar ? root.bar.foreground : root.tint
-                            font.family: Style.font.family
-                            font.pixelSize: Style.font.title
-                            font.bold: true
-                            elide: Text.ElideRight
-                            maximumLineCount: 2
-                            wrapMode: Text.Wrap
-                        }
-                        Text {
-                            width: parent.width
-                            visible: text !== ""
-                            text: root.trackArtist
-                            textFormat: Text.PlainText
-                            color: root.bar ? root.bar.foreground : root.tint
-                            opacity: 0.8
-                            font.family: Style.font.family
-                            font.pixelSize: Style.font.body
-                            elide: Text.ElideRight
-                        }
-                        Text {
-                            width: parent.width
-                            visible: text !== ""
-                            text: root.trackAlbum
-                            textFormat: Text.PlainText
-                            color: root.bar ? root.bar.foreground : root.tint
-                            opacity: 0.55
-                            font.family: Style.font.family
-                            font.pixelSize: Style.font.bodySmall
-                            elide: Text.ElideRight
+                        Column {
+                            anchors.left: parent.left
+                            anchors.right: parent.right
+                            anchors.verticalCenter: parent.verticalCenter
+                            spacing: Style.space(3)
+
+                            Text {
+                                width: parent.width
+                                text: root.trackTitle
+                                textFormat: Text.PlainText
+                                color: root.bar ? root.bar.foreground : root.tint
+                                font.family: Style.font.family
+                                font.pixelSize: Style.font.title
+                                font.bold: true
+                                elide: Text.ElideRight
+                                maximumLineCount: 2
+                                wrapMode: Text.Wrap
+                            }
+                            Text {
+                                width: parent.width
+                                visible: text !== ""
+                                text: root.trackArtist
+                                textFormat: Text.PlainText
+                                color: root.bar ? root.bar.foreground : root.tint
+                                opacity: 0.8
+                                font.family: Style.font.family
+                                font.pixelSize: Style.font.body
+                                elide: Text.ElideRight
+                            }
+                            Text {
+                                width: parent.width
+                                visible: text !== ""
+                                text: root.trackAlbum
+                                textFormat: Text.PlainText
+                                color: root.bar ? root.bar.foreground : root.tint
+                                opacity: 0.55
+                                font.family: Style.font.family
+                                font.pixelSize: Style.font.bodySmall
+                                elide: Text.ElideRight
+                            }
                         }
                     }
                 }
@@ -819,7 +829,7 @@ BarWidget {
                         // this small is tessellated into a visible polygon.
                         Shape {
                             id: knobCircle
-                            width: 2 * Math.round(Style.space(11) / 2)
+                            width: 2 * Math.round(Style.space(10) / 2)
                             height: width
                             y: track.y + (track.height - height) / 2
                             x: Math.max(0, Math.min(seek.width - width, seek.width * seek.progress - width / 2))
