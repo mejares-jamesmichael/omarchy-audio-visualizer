@@ -829,7 +829,7 @@ BarWidget {
                         // this small is tessellated into a visible polygon.
                         Shape {
                             id: knobCircle
-                            width: 2 * Math.round(Style.space(11) / 2)
+                            width: 2 * Math.round(Style.space(10) / 2)
                             height: width
                             y: track.y + (track.height - height) / 2
                             x: Math.max(0, Math.min(seek.width - width, seek.width * seek.progress - width / 2))
