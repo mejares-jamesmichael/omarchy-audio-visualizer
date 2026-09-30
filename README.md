@@ -41,7 +41,7 @@ You can use the following keyboard shortcuts while the player is open:
 To open it without the mouse, bind a key in `~/.config/hypr/bindings.lua`:
 
 ```lua
-o.bind("SUPER + ALT + M", "Music Visualizer Card", "omarchy-shell oriolus.audio-visualizer toggle")
+o.bind("SUPER + ALT + M", "Audio Visualizer Card", "omarchy-shell oriolus.audio-visualizer toggle")
 ```
 
 The same target also supports `open`, `close`, `playPause`, `next`, `previous`, `forward`, and `back` (10 seconds), so each of them can have its own key.
